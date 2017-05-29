@@ -32,6 +32,9 @@
       "{:a 1}"     [SEXPRS]
       "[1 nil]"    [SEXPRS]
       "nil"        [SEXPRS]
+      "{:a 1 :b 2}" [SEXPRS]
+      "{:a 1
+         :b 2}" [SEXPRS]
       "(ns specter-edn.core-test
   (:require [clojure.test :refer :all]
             [com.rpl.specter :refer :all]
