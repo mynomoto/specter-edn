@@ -31,14 +31,50 @@
       "[1]"        [SEXPRS]
       "{:a 1}"     [SEXPRS]
       "[1 nil]"    [SEXPRS]
-      "nil"        [SEXPRS]
+      "{:a 1 :b 2}" [SEXPRS]
+      "{:a 1
+         :b 2}" [SEXPRS]
+      "#{:a :b}" [SEXPRS]
       "(ns specter-edn.core-test
   (:require [clojure.test :refer :all]
             [com.rpl.specter :refer :all]
             [specter-edn.core :refer :all]))"
-                   [SEXPRS]))
+                   [SEXPRS]
+      "(fn [x] (inc x))" [SEXPRS]
+      "1" [SEXPRS]
+      "-1" [SEXPRS]
+      "0xff" [SEXPRS]
+      "-0xff" [SEXPRS]
+      "017" [SEXPRS]
+      "-017" [SEXPRS]
+      "2r1011" [SEXPRS]
+      "-2r1011" [SEXPRS]
+      "36rCRAZY" [SEXPRS]
+      "-36rCRAZY" [SEXPRS]
+      "7N" [SEXPRS]
+      "-5N" [SEXPRS]
+      "2/7" [SEXPRS]
+      "-22/7" [SEXPRS]
+      "1.1" [SEXPRS]
+      "-1.1" [SEXPRS]
+      "1.2e-5" [SEXPRS]
+      "-1.2e-5" [SEXPRS]
+      "1.1M" [SEXPRS]
+      "-1.1M" [SEXPRS]
+      "\"a\"" [SEXPRS]
+      ":a" [SEXPRS]
+      "a" [SEXPRS]
+      "nil"        [SEXPRS]
+      "true"        [SEXPRS]
+      "false"        [SEXPRS]
+      "\"escapes \\\"\b\f\n\t octal \377 hex \ucafe\""        [SEXPRS]
+      "(:a :b)"        [SEXPRS]
+      ))
     ;; FIXME: this sample doesn't pass
-    ;"#(conj %)"  [SEXPRS])))
+      ; "#(conj %)" [SEXPRS]
+      ; "\r" [SEXPRS]
+      ; #"pattern"        [SEXPRS]
+      ; "\a" [SEXPRS]
 
   (testing "constantly transforms preserve of the new structure"
       (are [structure path result] (= result (transform path (constantly '[a b c d]) structure))
